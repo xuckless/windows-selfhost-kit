@@ -1,0 +1,11 @@
+# Added by windows-selfhost-kit: keep Linux line endings for everything that runs in
+# Docker/WSL2, even when the repo is edited on Windows.
+* text=auto eol=lf
+mvnw text eol=lf
+*.sh text eol=lf
+*.cmd text eol=crlf
+*.bat text eol=crlf
+*.ps1 text eol=crlf
+*.jar binary
+*.png binary
+*.jpg binary

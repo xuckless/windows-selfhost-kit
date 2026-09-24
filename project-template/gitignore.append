@@ -1,0 +1,6 @@
+# windows-selfhost-kit: machine-local secrets and files
+.env
+certs/*
+!certs/.gitkeep
+docker-compose.override.yml
+target/

@@ -1,0 +1,13 @@
+# Added by windows-selfhost-kit: keep secrets, keys and build junk out of the image.
+.git
+.github
+.idea
+.vscode
+target
+certs
+.env
+.env.*
+scripts
+docker-compose*.yml
+ts-serve.json
+*.md

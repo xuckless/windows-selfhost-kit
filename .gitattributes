@@ -1,6 +1,6 @@
 # windows-selfhost-kit: every file uses LF line endings (bash needs it; PowerShell 5.1 is fine with it).
 * text=auto eol=lf
-# Not part of the downloadable kit (.zip): the website and this repo's own workflow.
-.github export-ignore
-site export-ignore
-.gitignore export-ignore
+# Not part of the downloadable kit (.zip): the website and this repo's own workflow (root only).
+/.github export-ignore
+/site export-ignore
+/.gitignore export-ignore

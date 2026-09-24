@@ -1,0 +1,42 @@
+# Publishes the tutorial (README.md) and the kit downloads to GitHub Pages on every push to main.
+name: pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - name: Check that dist/windows-selfhost-kit.md is up to date
+        run: tools/bundle.sh --check
+      - name: Install pandoc
+        run: sudo apt-get update -q && sudo apt-get install -y -q pandoc
+      - name: Build the site
+        run: site/build.sh _site
+      - uses: actions/configure-pages@v6
+      - uses: actions/upload-pages-artifact@v5
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v5

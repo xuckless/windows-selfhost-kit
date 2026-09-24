@@ -28,7 +28,8 @@ done
 while IFS= read -r f; do
   f="${f#./}"
   printf '%s\n' README.md "${FILES[@]}" | grep -qxF -- "$f" || err "not in tools/bundle.manifest: $f"
-done < <(find . -type f ! -path './dist/*' ! -path './.git/*' ! -name 'kit.env' ! -name 'kit.*.env' ! -name '*.bak' ! -name '*.orig' | sort)
+done < <(find . -type f ! -path './dist/*' ! -path './.git/*' ! -path './.github/*' ! -path './site/*' ! -path './_site/*' \
+  ! -path './.gitignore' ! -name LICENSE ! -name 'kit.env' ! -name 'kit.*.env' ! -name '*.bak' ! -name '*.orig' | sort)
 grep -q '<!-- BEGIN README -->\|<!-- END README -->' README.md && err "README.md must not contain the bundle markers"
 vars="$(awk '/<!-- VARS:BEGIN -->/{f=1; next} /<!-- VARS:END -->/{f=0} f' README.md | grep -v '^```')"
 [ "$vars" = "$(cat kit.env.example)" ] || err "README variables block (between VARS:BEGIN/END) differs from kit.env.example"

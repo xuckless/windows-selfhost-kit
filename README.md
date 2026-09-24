@@ -168,6 +168,8 @@ You need:
 ### A1. Put the kit in place and fill in kit.env  [HUMAN]
 
 1. Put the kit folder at `%USERPROFILE%\windows-selfhost-kit`, e.g. `C:\Users\you\windows-selfhost-kit`.
+   Easiest: download `windows-selfhost-kit.zip` from https://xuckless.github.io/windows-selfhost-kit/ and
+   extract it into `C:\Users\you\` (it contains the `windows-selfhost-kit` folder).
    If you received the single file `windows-selfhost-kit.md`, follow "How to use this file" at its top.
 2. Open PowerShell (Start menu -> "PowerShell") and run:
 
